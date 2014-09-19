@@ -26,30 +26,26 @@ public static String chose;
         User.setUser(name);
         IOUser.intro(name);
         IOUser.showProds();
-        in = new Scanner(System.in);
-        int choose;
-        try{
-            choose = in.nextInt();
-        }
-        catch (Exception ex){}
 
-        try{
-            (chose) = in.nextLine();
+        while(true) {
+            try {
+                in = new Scanner(System.in);
+                (chose) = in.nextLine();
 
-            if(chose.equals("visa")){
+                if (chose.equals("visa")) {
+
+                } else {
+                    Integer.parseInt(chose);
+                    IOUser.addToShoppingCart(Integer.valueOf(chose));
+                }
+
+            } catch (Exception ex) {
 
             }
-            else {
-                Integer.parseInt(chose);
-                IOUser.addToShoppingCart(Integer.valueOf(chose));
-            }
+            IOUser.showShoppingCard();
+            IOUser.showProds();
+            if(!in.hasNext()) break;
         }
-        catch (Exception ex){
-
-        }
-
-
-
 
     }
 
@@ -66,29 +62,74 @@ public static String chose;
       }
 
       public static void showProds(){
-          n=1;
+
+          System.out.println("--------------------------------------------------------------------");
           System.out.println("N\tName\t\t\tDescription\t\t\t\t\t  Quantity\t Price");
           for (Products prod : Store.products) {
 
-              System.out.println(n+++" "+ prod.getName() + "  " + prod.getDescription() + " \t\t "+
-                      prod.getPrice() + "   \t  " + prod.getCount());
+              System.out.println(prod.getID()+" "+ prod.getName() + "  " + prod.getDescription() + " \t\t "+
+                      prod.getCount() + "   \t  " +prod.getPrice() );
           }
+          System.out.println("--------------------------------------------------------------------");
       }
 
 
       public static void addToShoppingCart(int index){
+          if(shopCart.size()>0) {
+              for (Products prod : shopCart) {
 
-        for(Products prod : shopCart) {
-            if (prod.getID() == index) {
-                int temp = prod.getCount();
-                prod.setCount(++temp);
-            }
-            else {
-                Products temp = Store.products.get(index);
-                temp.setCount(1);
-                shopCart.add(temp);
-            }
-        }
+                      if (prod.getID() == --index) {
+                          int temp = prod.getCount();
+                          prod.setCount(++temp);
+                          Products teeemp =(Store.products.get(index));
+                          int teemp =teeemp.getCount();
+                          teeemp.setCount(teemp-1);
+                          Store.products.get(index-1).equals( teeemp);
+                          break;
+
+                      }
+
+                       else {
+                          Products temp = new Products(Store.products.get(--index));
+                          temp.setCount(1);
+                          shopCart.add(temp);
+                          Products teeemp =(Store.products.get(index));
+                          int teemp =teeemp.getCount();
+                          teeemp.setCount(teemp-1);
+                          Store.products.get(index-1).equals( teeemp);
+                          break;
+                      }
+
+              }
+          }
+          else{
+
+                  Products temp = new Products (Store.products.get(--index));
+                  temp.setCount(1);
+                  shopCart.add(temp);
+                  Products teeemp =(Store.products.get(index));
+                  int teemp =teeemp.getCount();
+                  teeemp.setCount(teemp-1);
+                  Store.products.get(index-1).equals( teeemp);
+
+
+          }
+
+
+      }
+
+      public static void showShoppingCard(){
+
+          if(shopCart.size()>0) {
+              System.out.println("--------------------------------------------------------------------");
+              for (Products prod : shopCart) {
+                  System.out.println(prod.getID() + " " + prod.getName() + "  " + prod.getDescription() + " \t\t " +
+                          prod.getCount() + "   \t  " + prod.getPrice() );
+
+              }
+              System.out.println("--------------------------------------------------------------------");
+          }
+          else System.out.println("Empty");
       }
 
 
@@ -148,7 +189,7 @@ class Store
 
             for (int i =0; i < names.size(); i++) {
 
-                    Products prod = new Products(names.get(i), descr.get(i), prices.get(i), counts.get(i) );
+                    Products prod = new Products(names.get(i), descr.get(i), counts.get(i),prices.get(i));
                     products.add(prod);
             }
         }

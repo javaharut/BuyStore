@@ -21,6 +21,13 @@ public class Products {
        this.id=++idh;
 
    }
+    public Products(Products second){
+        this.name=second.name;
+        this.description= second.description;
+        this.count=second.count;
+        this.price =second.price;
+        this.id=second.id;
+    }
 
 
     public void setPrice(int price) {
