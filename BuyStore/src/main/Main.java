@@ -13,13 +13,13 @@ import java.util.List;
 
 public class Main {
 
-    public static List<Products> products = new ArrayList<Products>();
+
 
     public static void main(String[] args) throws IOException {
         Store store = new Store();
         store.getProducts();
 
-        for (Products prod : products) {
+        for (Products prod : Store.products) {
 
             System.out.println(prod.getName() + " " + prod.getDescription() + " "+
                     prod.getPrice() + " " + prod.getCount());
@@ -31,11 +31,11 @@ public class Main {
 
 class Store
 {
-
-    ArrayList<String> names = new ArrayList<String>();
-    ArrayList<String> descr = new ArrayList<String>();
-    ArrayList<Integer> counts = new ArrayList<Integer>();
-    ArrayList<Integer> prices = new ArrayList<Integer>();
+    public static List<Products> products = new ArrayList<Products>();
+    private ArrayList<String> names = new ArrayList<String>();
+    private ArrayList<String> descr = new ArrayList<String>();
+    private ArrayList<Integer> counts = new ArrayList<Integer>();
+    private ArrayList<Integer> prices = new ArrayList<Integer>();
 
     public void getProducts()throws IOException{
         try {
@@ -81,8 +81,8 @@ class Store
 
             for (int i =0; i < names.size(); i++) {
 
-                    Products prod = new Products(String.valueOf(names.get(i)), descr.get(i), prices.get(i), counts.get(i) );
-                    Main.products.add(prod);
+                    Products prod = new Products(names.get(i), descr.get(i), prices.get(i), counts.get(i) );
+                    products.add(prod);
             }
         }
         catch(Exception ex){
