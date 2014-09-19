@@ -17,8 +17,8 @@
     <product id="3">
         <name>Gambardella, Matthew</name>
         <description>XML Developer's Guide</description>
-        <count>7</count>
-        <price>44</price>
+        <count>20</count>
+        <price>420</price>
     </product>
 
     <product id="4">
