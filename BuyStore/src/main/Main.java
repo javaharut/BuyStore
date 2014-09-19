@@ -15,12 +15,18 @@ import java.util.List;
 
 public class Main {
 
-    List<Products> products = new ArrayList<Products>();
 
 
-    public static void main(String[] args) {
+    public static List<Products> products = new ArrayList<Products>();
+    public static void main(String[] args) throws IOException {
+    Reader reader = new Reader();
+        reader.getProducts();
 
+        for (int i = 0; i <products.size() ; i++) {
 
+            System.out.println(products.get(i).getName() + " " + products.get(i).getDescription() + " "+
+                                products.get(i).getPrice() + " " + products.get(i).getCount());
+        }
 
 
 
@@ -31,14 +37,15 @@ public class Main {
 
 class Reader
 {
-    List<ArrayList> all = new ArrayList<ArrayList>();
+
     ArrayList<String> names = new ArrayList<String>();
     ArrayList<String> descr = new ArrayList<String>();
     ArrayList<Integer> counts = new ArrayList<Integer>();
-    ArrayList
+    ArrayList<Integer> prices = new ArrayList<Integer>();
+
     public void getProducts()throws IOException{
         try {
-            File file = new File("\\products.xml");
+            File file = new File("BuyStore/src/main/products.xml");
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
             Document doc = db.parse(file);
@@ -58,17 +65,37 @@ class Reader
                     NodeList fstNm = fstNmElmnt.getChildNodes();
                     names.add(((Node) fstNm.item(0)).getNodeValue());
 
-                    NodeList lstNmElmntLst = fstElmnt.getElementsByTagName("lastname");
+                    NodeList lstNmElmntLst = fstElmnt.getElementsByTagName("description");
                     Element lstNmElmnt = (Element) lstNmElmntLst.item(0);
                     NodeList lstNm = lstNmElmnt.getChildNodes();
-                    System.out.println("Last Name : " + ((Node) lstNm.item(0)).getNodeValue());
+                     descr.add(((Node) lstNm.item(0)).getNodeValue());
+
+                    NodeList countlist = fstElmnt.getElementsByTagName("count");
+                    Element countls = (Element) countlist.item(0);
+                    NodeList cnt = countls.getChildNodes();
+                    counts.add(Integer.valueOf(((Node) cnt.item(0)).getNodeValue()));
+
+                    NodeList pricelist = fstElmnt.getElementsByTagName("price");
+                    Element pricelst = (Element) pricelist.item(0);
+                    NodeList prc = pricelst.getChildNodes();
+                    prices.add( Integer.valueOf(((Node) prc.item(0)).getNodeValue()));
+
 
 
                 }
+
+            }
+
+
+            for (int i =0; i < names.size(); i++) {
+
+
+                    Products prod = new Products(String.valueOf(names.get(i)), descr.get(i), prices.get(i), counts.get(i) );
+                    Main.products.add(prod);
             }
         }
         catch(Exception ex){
-
+        ex.printStackTrace();
         }
     }
 
