@@ -10,6 +10,7 @@ import org.w3c.dom.NodeList;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
 
@@ -19,15 +20,45 @@ public class Main {
         Store store = new Store();
         store.getProducts();
 
-        for (Products prod : Store.products) {
+        IOUser.hi();
+        Scanner in = new Scanner(System.in);
+        String name = in.nextLine();
+        User.setUser(name);
+        IOUser.intro(name);
+        IOUser.showProds();
 
-            System.out.println(prod.getName() + " " + prod.getDescription() + " "+
-                    prod.getPrice() + " " + prod.getCount());
-        }
+
+
+
+
 
     }
 
 }
+
+  class IOUser{
+    public static int n;
+    public static void hi(){
+        System.out.println("Hi, please input your name to register in system!");
+    }
+      public static void intro(String str){
+          System.out.println( str +" here are what you can buy at our online store, input number to buy OR type 'visa' to link your card! ");
+      }
+
+      public static void showProds(){
+          n=1;
+          System.out.println("N\tName\t\t\tDescription\t\t\t\t\t\tPrice\t Quantity  ");
+          for (Products prod : Store.products) {
+
+              System.out.println(n+++" "+ prod.getName() + "  " + prod.getDescription() + " \t\t "+
+                      prod.getPrice() + "   \t  " + prod.getCount());
+          }
+      }
+
+
+}
+
+
 
 class Store
 {

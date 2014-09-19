@@ -1,22 +1,31 @@
 package main;
 
 public class User {
-    private String login;
-    private String password;
-    int balance;
 
-    public User(String login, String password, int balance) {
-        this.login = login;
-        this.password = password;
-        this.balance = balance;
+    private String name;
+    private int balance;
+    private static User user = null;
+
+       private User(String name){
+           this.balance = 0;
+            this.name=name;
+
     }
 
-    public String getLogin(){ return this.login;}
-    public String getPassword(){ return this.password;}
-    public int getBalance(){ return this.balance;}
+    public static User setUser(String name){
 
-    public void setLogin(String login) { this.login = login;}
-    public void setPassword(String password) { this.password = password;}
+        if(user==null) {
+            user = new User(name);
+        }
+        return user;
+    }
+    public static User getUser() throws NullPointerException{
+
+        return user;
+    }
+
+    public String getName(){ return this.name;}
+    public int getBalance(){ return this.balance;}
     public void setBalance(int balance) {this.balance = balance;}
 
 }
