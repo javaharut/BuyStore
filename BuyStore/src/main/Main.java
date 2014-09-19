@@ -47,7 +47,7 @@ public class Main {
 
       public static void showProds(){
           n=1;
-          System.out.println("N\tName\t\t\tDescription\t\t\t\t\t\tPrice\t Quantity  ");
+          System.out.println("N\tName\t\t\tDescription\t\t\t\t\t  Quantity\t Price");
           for (Products prod : Store.products) {
 
               System.out.println(n+++" "+ prod.getName() + "  " + prod.getDescription() + " \t\t "+
