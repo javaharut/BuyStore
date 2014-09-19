@@ -44,7 +44,7 @@ public static String chose;
             }
             IOUser.showShoppingCard();
             IOUser.showProds();
-            if(!in.hasNext()) break;
+            if((in.nextLine()).equals("exit")) break;
         }
 
     }
