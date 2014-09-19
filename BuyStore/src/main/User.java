@@ -1,16 +1,16 @@
 package main;
 
-/**
- * Created by HARUT1 on 9/19/2014.
- */
+
 public class User {
 
     private String login;
     private String password;
+    int balance;
 
-    public User(String login, String password) {
+    public User(String login, String password, int balance) {
         this.login = login;
         this.password = password;
+        this.balance = balance;
     }
 
     public String getLogin(){ return this.login;}
