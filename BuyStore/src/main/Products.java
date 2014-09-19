@@ -5,9 +5,14 @@ package main;
  */
 public class Products {
     String name;
+    int id;
     String description;
     int count;
     int price;
+
+   public Products() {
+
+   }
 
 
    public Products(String name, String description, int count, int price)
@@ -45,5 +50,19 @@ public class Products {
     }
     public int getPrice(){
         return price;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public String toString() {
+        String res = "name " + this.name +" description " + this.description + " count " + this.count +" price " + this.price;
+        return res;
     }
 }

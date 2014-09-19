@@ -20,8 +20,13 @@ public class Main {
 
     public static void main(String[] args) {
 
+    HarutReader hr = new HarutReader();
 
-
+        try {
+            hr.getProducts();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
     }
@@ -35,7 +40,7 @@ class Reader
     ArrayList<String> names = new ArrayList<String>();
     ArrayList<String> descr = new ArrayList<String>();
     ArrayList<Integer> counts = new ArrayList<Integer>();
-    ArrayList
+
     public void getProducts()throws IOException{
         try {
             File file = new File("\\products.xml");
