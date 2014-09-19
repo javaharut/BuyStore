@@ -63,7 +63,7 @@ public static String chose;
 
       public static void showProds(){
 
-          System.out.println("--------------------------------------------------------------------");
+          System.out.println("-------------------------Products-----------------------------------");
           System.out.println("N\tName\t\t\tDescription\t\t\t\t\t  Quantity\t Price");
           for (Products prod : Store.products) {
 
@@ -75,53 +75,57 @@ public static String chose;
 
 
       public static void addToShoppingCart(int index){
-          if(shopCart.size()>0) {
-              for (Products prod : shopCart) {
+          boolean cheked = true;
+            if(shopCart.size()>0) {
 
-                      if (prod.getID() == --index) {
-                          int temp = prod.getCount();
-                          prod.setCount(++temp);
-                          Products teeemp =(Store.products.get(index));
-                          int teemp =teeemp.getCount();
-                          teeemp.setCount(teemp-1);
-                          Store.products.get(index-1).equals( teeemp);
-                          break;
+                for (Products prod : shopCart) {
+                    cheked =true;
+                    if (prod.getID() == index) {
+                        int temp = prod.getCount();
+                        prod.setCount(++temp);
+                        Products teeemp = (Store.products.get(--index));
+                        int teemp = teeemp.getCount();
+                        teeemp.setCount(teemp - 1);
+                        Store.products.get(index - 1).equals(teeemp);
+                        cheked = false;
+                        break;
 
-                      }
+                    }
+                }
 
-                       else {
-                          Products temp = new Products(Store.products.get(--index));
-                          temp.setCount(1);
-                          shopCart.add(temp);
-                          Products teeemp =(Store.products.get(index));
-                          int teemp =teeemp.getCount();
-                          teeemp.setCount(teemp-1);
-                          Store.products.get(index-1).equals( teeemp);
-                          break;
-                      }
+                    if(cheked){
+                        Products temp = new Products(Store.products.get(--index));
+                        temp.setCount(1);
+                        shopCart.add(temp);
+                        Products teeemp = (Store.products.get(index));
+                        int teemp = teeemp.getCount();
+                        teeemp.setCount(teemp - 1);
+                        Store.products.get(index - 1).equals(teeemp);
+                        cheked =false;
+                    }
 
-              }
+            }
+          else {
+                Products temp = new Products(Store.products.get(--index));
+                temp.setCount(1);
+                shopCart.add(temp);
+                Products teeemp = (Store.products.get(index));
+                int teemp = teeemp.getCount();
+                teeemp.setCount(teemp - 1);
+                Store.products.get(index - 1).equals(teeemp);
+            }
+
+
+
           }
-          else{
-
-                  Products temp = new Products (Store.products.get(--index));
-                  temp.setCount(1);
-                  shopCart.add(temp);
-                  Products teeemp =(Store.products.get(index));
-                  int teemp =teeemp.getCount();
-                  teeemp.setCount(teemp-1);
-                  Store.products.get(index-1).equals( teeemp);
 
 
-          }
 
-
-      }
 
       public static void showShoppingCard(){
 
           if(shopCart.size()>0) {
-              System.out.println("--------------------------------------------------------------------");
+              System.out.println("-----------------------------ShoppingCard---------------------------");
               for (Products prod : shopCart) {
                   System.out.println(prod.getID() + " " + prod.getName() + "  " + prod.getDescription() + " \t\t " +
                           prod.getCount() + "   \t  " + prod.getPrice() );
