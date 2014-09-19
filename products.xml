@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<catalog>
+    <product id="1">
+        <name>Gambardella, Matthew</name>
+        <description>XML Developer's Guide</description>
+        <count>7</count>
+        <price>44</price>
+    </product>
+
+    <product  id="2">
+        <name>Gambardella, Matthew</name>
+        <description>XML Developer's Guide</description>
+        <count>7</count>
+        <price>44</price>
+    </product>
+
+    <product id="3">
+        <name>Gambardella, Matthew</name>
+        <description>XML Developer's Guide</description>
+        <count>7</count>
+        <price>44</price>
+    </product>
+
+    <product id="4">
+        <name>Gambardella, Matthew</name>
+        <description>XML Developer's Guide</description>
+        <count>7</count>
+        <price>44</price>
+    </product>
+
+</catalog>
