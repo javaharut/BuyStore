@@ -15,8 +15,10 @@ public class User {
 
     public String getLogin(){ return this.login;}
     public String getPassword(){ return this.password;}
+    public int getBalance(){ return this.balance;}
 
     public void setLogin(String login) { this.login = login;}
     public void setPassword(String password) { this.password = password;}
+    public void setBalance(int balance) {this.balance = balance;}
 
 }
