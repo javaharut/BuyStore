@@ -4,6 +4,8 @@ package main;
  * Created by Arman on 9/19/2014.
  */
 public class Products {
+    private static int idh= 0;
+    private int id;
     String name;
     String description;
     int count;
@@ -16,6 +18,7 @@ public class Products {
        this.description=description;
        this.count=count;
        this.price =price;
+       this.id=++idh;
 
    }
 
@@ -23,7 +26,7 @@ public class Products {
     public void setPrice(int price) {
         this.price = price;
     }
-
+    public int getID(){return this.id;}
     public void setCount(int count) {
         this.count = count;
     }

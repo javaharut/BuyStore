@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 public class Main {
 
-
+public static String chose;
 
     public static void main(String[] args) throws IOException {
         Store store = new Store();
@@ -26,8 +26,27 @@ public class Main {
         User.setUser(name);
         IOUser.intro(name);
         IOUser.showProds();
+        in = new Scanner(System.in);
+        int choose;
+        try{
+            choose = in.nextInt();
+        }
+        catch (Exception ex){}
 
+        try{
+            (chose) = in.nextLine();
 
+            if(chose.equals("visa")){
+
+            }
+            else {
+                Integer.parseInt(chose);
+                IOUser.addToShoppingCart(Integer.valueOf(chose));
+            }
+        }
+        catch (Exception ex){
+
+        }
 
 
 
@@ -37,12 +56,13 @@ public class Main {
 }
 
   class IOUser{
-    public static int n;
+    private static ArrayList<Products>  shopCart = new ArrayList<Products>();
+    private static int n;
     public static void hi(){
         System.out.println("Hi, please input your name to register in system!");
     }
       public static void intro(String str){
-          System.out.println( str +" here are what you can buy at our online store, input number to buy OR type 'visa' to link your card! ");
+          System.out.println( str +", here are what you can buy at our online store, input number to buy OR type 'visa' to link your card! ");
       }
 
       public static void showProds(){
@@ -53,6 +73,22 @@ public class Main {
               System.out.println(n+++" "+ prod.getName() + "  " + prod.getDescription() + " \t\t "+
                       prod.getPrice() + "   \t  " + prod.getCount());
           }
+      }
+
+
+      public static void addToShoppingCart(int index){
+
+        for(Products prod : shopCart) {
+            if (prod.getID() == index) {
+                int temp = prod.getCount();
+                prod.setCount(++temp);
+            }
+            else {
+                Products temp = Store.products.get(index);
+                temp.setCount(1);
+                shopCart.add(temp);
+            }
+        }
       }
 
 
