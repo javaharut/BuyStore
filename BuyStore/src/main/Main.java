@@ -42,8 +42,9 @@ public static String chose;
             } catch (Exception ex) {
 
             }
-            IOUser.showShoppingCard();
             IOUser.showProds();
+            IOUser.showShoppingCard();
+
             if((in.nextLine()).equals("exit")) break;
         }
 
@@ -51,7 +52,7 @@ public static String chose;
 
 }
 
-  class IOUser{
+  final class IOUser{
     private static ArrayList<Products>  shopCart = new ArrayList<Products>();
     private static int n;
     public static void hi(){
@@ -123,7 +124,7 @@ public static String chose;
 
 
       public static void showShoppingCard(){
-
+          int tot =0;
           if(shopCart.size()>0) {
               System.out.println("-----------------------------ShoppingCard---------------------------");
               for (Products prod : shopCart) {
@@ -132,6 +133,7 @@ public static String chose;
 
               }
               System.out.println("--------------------------------------------------------------------");
+              System.out.print("                                           Total price:     "); for(Products prod : shopCart) {tot +=(prod.getPrice()*prod.getCount());}System.out.println(tot);
           }
           else System.out.println("Empty");
       }
