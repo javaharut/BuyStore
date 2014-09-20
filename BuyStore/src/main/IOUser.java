@@ -196,6 +196,7 @@ public class IOUser{
 
 
         }
+        else System.out.println("You can't purchase at this time, check your balance and shopping card...");
     }
 
     public static void userHelpInfo(){
