@@ -19,13 +19,14 @@ public class User {
         }
         return user;
     }
-    public static User getUser() throws NullPointerException{
+    public static User getUser() {
 
         return user;
     }
 
-    public String getName(){ return this.name;}
-    public int getBalance(){ return this.balance;}
-    public void setBalance(int balance) {this.balance = balance;}
+    public String getName(){ return user.name;}
+    public int getBalance(){ return user.balance;}
+    public void setBalance(int balance) {user.balance += balance;}
+    public void doPurchase(int money){user.balance -=money;}
 
 }

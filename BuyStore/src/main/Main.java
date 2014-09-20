@@ -24,6 +24,7 @@ public static String chose;
         Scanner in = new Scanner(System.in);
         String name = in.nextLine();
         User.setUser(name);
+        IOUser.userHelpInfo();
         IOUser.intro(name);
         IOUser.showProds();
 
@@ -34,13 +35,20 @@ public static String chose;
             try {
 
                 if (chose.equals("visa")) {
-
+                IOUser.linkVisa();
 
                 }
 
                 else if (chose.equals("buy")){
+                    IOUser.buyShoppingCard();
 
+                }
+                else if(chose.equals("charge visa")){
+                    IOUser.chargeVisa();
 
+                }
+                else if(chose.equals("help")){
+                    IOUser.userHelpInfo();
                 }
                 else if (chose.equals("exit")){
                 break;
@@ -49,9 +57,6 @@ public static String chose;
                     Integer.parseInt(chose);
                     IOUser.addToShoppingCart(Integer.valueOf(chose));
                 }
-
-
-
 
 
             } catch (Exception ex) {
