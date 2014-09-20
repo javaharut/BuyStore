@@ -6,10 +6,10 @@ package main;
 public class Products {
     private static int idh= 0;
     private int id;
-    String name;
-    String description;
-    int count;
-    int price;
+    private String name;
+    private String description;
+    private int count;
+    private int price;
 
 
    public Products(String name, String description, int count, int price)
