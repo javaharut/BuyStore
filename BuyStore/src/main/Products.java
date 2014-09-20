@@ -11,6 +11,8 @@ public class Products {
     private int count;
     private int price;
 
+    public Products() {}
+
 
    public Products(String name, String description, int count, int price)
    {
