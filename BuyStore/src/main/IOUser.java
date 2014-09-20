@@ -160,6 +160,7 @@ public class IOUser{
                 moneyin = Integer.valueOf(in.nextLine());
                 myaccount.chargeAccount(moneyin,pintemp);
                 System.out.println("Thank you, your charge was successful: ");
+                User.getUser().setBalance(moneyin);
                 break;
             }
             catch (AccessDeniedException ex){

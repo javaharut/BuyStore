@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by USER on 20.09.2014.
  */
-class Store
+public class Store
 {
     public static List<Products> products = new ArrayList<Products>();
     private ArrayList<String> names = new ArrayList<String>();
