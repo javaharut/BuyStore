@@ -4,15 +4,12 @@ package main;
  * Created by Arman on 9/19/2014.
  */
 public class Products {
-    String name;
-    int id;
-    String description;
-    int count;
-    int price;
-
-   public Products() {
-
-   }
+    private static int idh= 0;
+    private int id;
+    private String name;
+    private String description;
+    private int count;
+    private int price;
 
 
    public Products(String name, String description, int count, int price)
@@ -21,21 +18,22 @@ public class Products {
        this.description=description;
        this.count=count;
        this.price =price;
+       this.id=++idh;
 
    }
-
-    public void setName(String name) {
-        this.name = name;
+    public Products(Products second){
+        this.name=second.name;
+        this.description= second.description;
+        this.count=second.count;
+        this.price =second.price;
+        this.id=second.id;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     public void setPrice(int price) {
         this.price = price;
     }
-
+    public int getID(){return this.id;}
     public void setCount(int count) {
         this.count = count;
     }
@@ -50,19 +48,5 @@ public class Products {
     }
     public int getPrice(){
         return price;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    @Override
-    public String toString() {
-        String res = "name " + this.name +" description " + this.description + " count " + this.count +" price " + this.price;
-        return res;
     }
 }
