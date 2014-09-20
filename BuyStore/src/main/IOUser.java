@@ -43,9 +43,12 @@ public class IOUser{
                     prod.setCount(++temp);
                     Products teeemp = (Store.products.get(--index));
                     int teemp = teeemp.getCount();
-                    teeemp.setCount(teemp - 1);
-                    Store.products.get(index - 1).equals(teeemp);
-                    cheked = false;
+                    if((teemp-1>=0)) {
+                        teeemp.setCount(teemp - 1);
+                        Store.products.get(index - 1).equals(teeemp);
+                        cheked = false;
+                    }
+                    else System.out.println("Sorry product isn't available anymore..");
                     break;
 
                 }
@@ -57,9 +60,12 @@ public class IOUser{
                 shopCart.add(temp);
                 Products teeemp = (Store.products.get(index));
                 int teemp = teeemp.getCount();
-                teeemp.setCount(teemp - 1);
-                Store.products.get(index - 1).equals(teeemp);
-                cheked =false;
+                if((teemp-1>=0)) {
+                    teeemp.setCount(teemp - 1);
+                    Store.products.get(index - 1).equals(teeemp);
+                    cheked = false;
+                }
+                else System.out.println("Sorry product isn't available anymore..");
             }
 
         }
@@ -69,8 +75,11 @@ public class IOUser{
             shopCart.add(temp);
             Products teeemp = (Store.products.get(index));
             int teemp = teeemp.getCount();
-            teeemp.setCount(teemp - 1);
-            Store.products.get(index - 1).equals(teeemp);
+            if((teemp-1>=0)) {
+                teeemp.setCount(teemp - 1);
+                Store.products.get(index - 1).equals(teeemp);
+            }
+            else System.out.println("Sorry product isn't available anymore..");
         }
 
 
