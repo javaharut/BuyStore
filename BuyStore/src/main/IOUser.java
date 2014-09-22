@@ -40,10 +40,11 @@ public class IOUser{
                 cheked =true;
                 if (prod.getID() == index) {
                     int temp = prod.getCount();
-                    prod.setCount(++temp);
+
                     Products teeemp = (Store.products.get(--index));
                     int teemp = teeemp.getCount();
                     if((teemp-1>=0)) {
+                        prod.setCount(++temp);
                         teeemp.setCount(teemp - 1);
                         Store.products.get(index - 1).equals(teeemp);
                         cheked = false;
@@ -56,11 +57,11 @@ public class IOUser{
 
             if(cheked){
                 Products temp = new Products(Store.products.get(--index));
-                temp.setCount(1);
-                shopCart.add(temp);
                 Products teeemp = (Store.products.get(index));
                 int teemp = teeemp.getCount();
                 if((teemp-1>=0)) {
+                    temp.setCount(1);
+                    shopCart.add(temp);
                     teeemp.setCount(teemp - 1);
                     Store.products.get(index - 1).equals(teeemp);
                     cheked = false;
@@ -71,11 +72,11 @@ public class IOUser{
         }
         else {
             Products temp = new Products(Store.products.get(--index));
-            temp.setCount(1);
-            shopCart.add(temp);
             Products teeemp = (Store.products.get(index));
             int teemp = teeemp.getCount();
             if((teemp-1>=0)) {
+                temp.setCount(1);
+                shopCart.add(temp);
                 teeemp.setCount(teemp - 1);
                 Store.products.get(index - 1).equals(teeemp);
             }
@@ -160,7 +161,7 @@ public class IOUser{
                 moneyin = Integer.valueOf(in.nextLine());
                 myaccount.chargeAccount(moneyin,pintemp);
                 System.out.println("Thank you, your charge was successful: ");
-                User.getUser().setBalance(moneyin);
+                //User.getUser().setBalance(moneyin);
                 break;
             }
             catch (AccessDeniedException ex){
@@ -190,12 +191,10 @@ public class IOUser{
             try{
                 id = in.nextLong();
                 if(id == BankAccount.getAccount().getID()) {
-                    for (Products prod : shopCart) {
-                        shopCart.remove(prod);
-
-                    }
-                    shopCart.remove(0);
                     User.getUser().doPurchase(totalamount);
+                    for (int i = 0; i < shopCart.size() ; i++) {
+                        shopCart.remove(i);
+                    }
                     System.out.println("Congrats..Your purchase is done!!");
                 }
                 else System.out.println("Sorry wrong identification..");
